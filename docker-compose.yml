@@ -1,0 +1,16 @@
+version: '2'
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: waltonmax/redis:3.2.5
+    container_name: redis
+    command: ["redis-server", "/etc/redis.conf"]
+    restart: always
+    privileged: true
+    environment:
+    - TERM=linux
+    volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /data/redis-data:/data/redis:Z
